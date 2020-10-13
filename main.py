@@ -5,6 +5,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
 website= "https://pentiumproiitest.enjin.com"
+GameStoreModuleID=53792806
+
+Purchases={}
 
 driver=webdriver.Edge()
 driver.get(website)
@@ -44,7 +47,7 @@ if MessagesNum.text!='':
         Message=getMessageContents()
         print()
 
-        """
+
         #Going through each message
         for i in range(MessagesNum):
             Message=Messages[i]
@@ -56,9 +59,11 @@ if MessagesNum.text!='':
             if username=="Enjin Notifier" and MessageType=="Purchase notification":
                 Message.click()
                 MessageContent= getMessageContents()
+                Purchases[MessageContent[3]]=MessageContent[2] #Get the product purchased and adding the users minecraft username associated with the purchase
+                Purchases.get(MessageContent[3]).get(MessageContent[2])["Price"]=MessageContent[4]
                 #.partition('\n')[0]
-
-        """
+        
+        driver.get(website+"/admin/editmodule/index/editoraction/subscribers/preset/"+GameStoreModuleID)
 
 
 else:
