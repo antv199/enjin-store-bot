@@ -4,12 +4,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 
-website= "https://pentiumproiitest.enjin.com"
+website= "https://YOURSITEGOESHERE.enjin.com"
 GameStoreModuleID=53792806
 
 Purchases={}
 
-driver=webdriver.Edge()
+driver=webdriver.Edge() #since edge is included in almost every Windows 10 machine
 driver.get(website)
 
 try:
